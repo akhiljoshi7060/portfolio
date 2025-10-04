@@ -1,543 +1,637 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#000" />
-  <meta property="og:description" content="Hi! My name is Akhil. I'm a Robotics and Automation Engineer dedicated to developing intelligent systems that drive innovation in the field of robotics." />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:description" content="Hi! My name is Akhil. I'm a Robotics and Automation Engineer dedicated to developing intelligent systems that drive innovation in the field of robotics." />
   <title>Akhil Joshi | Portfolio</title>
-  <link rel="icon" type="image/x-icon" href="src/png/main-favicon.png" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Passions+Conflict&family=Orbitron&family=Fira+Code&family=Six+Caps" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Arial, Helvetica, sans-serif; background: #fff; color: #333; line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* ───────── NAVBAR ───────── */
+    .navbar {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.93);
+      backdrop-filter: blur(10px);
+      padding: 12px 24px;
+      border-radius: 50px;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .navbar ul { display: flex; list-style: none; gap: 32px; }
+    .navbar a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.25s; }
+    .navbar a:hover,
+    .navbar a.active { color: #22c55e; }
+
+    /* ───────── HERO ───────── */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: -1;
+    }
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transform: translateY(-80px);
+      max-width: 1100px;
+      padding: 0 20px;
+    }
+    .hero-content h1 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+      margin-bottom: 160px; /* gap for UC logo */
+    }
+    .highlight { color: #22c55e; }
+    .btn {
+      background: #22c55e;
+      color: #fff;
+      padding: 18px 42px;
+      border-radius: 34px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      transition: 0.2s;
+    }
+    .btn:hover { background: #16a34a; transform: translateY(-3px); }
+
+    /* ───────── ABOUT ───────── */
+    .about { padding: 90px 0; background: #f9fafb; }
+    .about-content {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .about-image img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+    .about-text h2 { font-size: 2rem; margin-bottom: 16px; }
+    .about-text p { margin-bottom: 20px; color: #555; font-size: 1.05rem; }
+
+    /* ───────── SKILLS ───────── */
+    .skills { padding: 90px 0; background: #fff; }
+    .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 44px; }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 18px;
+    }
+    .skill-item {
+      background: #fff;
+      padding: 20px 14px;
+      border-radius: 15px;
+      text-align: center;
+      border: 2px solid #f0f0f0;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+      transition: transform 0.25s;
+    }
+    .skill-item:hover {
+      transform: translateY(-5px);
+      border-color: #22c55e;
+      box-shadow: 0 8px 24px rgba(34, 197, 94, 0.18);
+    }
+    .skill-item img { width: 50px; height: 50px; object-fit: contain; margin: 0 auto 10px; }
+    .skill-item h3 { font-size: 0.9rem; font-weight: 600; }
+
+    /* ───────── PROJECTS ───────── */
+    .projects { padding: 90px 0; background: #f9fafb; }
+    .project-grid { display: flex; flex-direction: column; gap: 48px; }
+    .project-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+    .project-media-row-triple {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 15px;
+      min-height: 350px;
+      padding: 20px;
+    }
+    .project-media-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      min-height: 350px;
+      padding: 20px;
+    }
+    .project-video-container,
+    .project-presentation-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .project-video-container video { width: 100%; height: 100%; object-fit: cover; }
+    .project-presentation-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 20px;
+      background: #f8f9fa;
+    }
+    .project-content { padding: 26px; }
+    .project-content h3 { font-size: 1.4rem; margin-bottom: 12px; }
+    .project-content p { font-size: 1rem; margin-bottom: 18px; color: #555; }
+    .project-link {
+      display: inline-block;
+      color: #22c55e;
+      padding: 10px 18px;
+      border: 2px solid #22c55e;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.25s;
+    }
+    .project-link:hover { background: #22c55e; color: #fff; }
+
+    /* ───────── FOOTER ───────── */
+    .footer { padding: 52px 0; text-align: center; background: #333; color: #fff; }
+    .social-links { display: flex; justify-content: center; gap: 26px; margin-bottom: 20px; }
+    .social-links a { color: #fff; font-size: 1.1rem; text-decoration: none; transition: color 0.2s; }
+    .social-links a:hover { color: #22c55e; }
+
+    @media (max-width: 968px) {
+      .about-content { grid-template-columns: 1fr; }
+      .hero-content { transform: translateY(-50px); }
+      .hero-content h1 { font-size: clamp(1.6rem, 8vw, 2.8rem); margin-bottom: 120px; }
+    }
+  </style>
 </head>
-<body class="body">
-  <audio loop="" id="audioPlayer" style="display: none">
-    <source src="src/mp3/preloader.mp3" type="audio/mp3" />
+<body>
+  <audio id="bgMusic" preload="auto" loop>
+    <source src="src/mp3/preloader.mp3" type="audio/mpeg" />
   </audio>
-  <div id="preloader"></div>
-  <noscript>Allow Javascript</noscript>
 
-  <header>
-    <div class="cursor-inner" id="cursor-inner"></div>
-    <div class="cursor-outer" id="cursor-outer"></div>
+  <!-- ───────── NAVBAR ───────── -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+    </ul>
+  </nav>
 
-    <div class="navbar" id="navbar">
-      <div class="hey">Hey!</div>
-      <div class="logo" tabindex="0" aria-label="vinod jangid logo">
-        <!-- <div class="logo-top">
-          <img src="src/png/nav-avatar.png" alt="animation-head" id="nav-avatar"/>
-        </div> -->
-      </div>
-      <div class="navbar-tabs" id="navbar-tabs">
-        <ul class="navbar-tabs-ul">
-          <li class="home activeThistab" class="navbar-tabs-li" data-aos="fade-down" data-aos-delay="100">
-            <a href="#home" tabindex="0" aria-label="Home menu button">
-              Home
-            </a>
-          </li>
-
-          <li class="about" class="navbar-tabs-li" data-aos="fade-down" data-aos-delay="300">
-            <a href="#about" aria-label="about menu button">
-              AboutMe
-            </a>
-          </li>
-
-          <li class="skills" class="navbar-tabs-li" data-aos="fade-down" data-aos-delay="500">
-            <a href="#skills" aria-label="skills menu button">
-              Skills
-            </a>
-          </li>
-
-          <li class="projects" class="navbar-tabs-li" data-aos="fade-down" data-aos-delay="700">
-            <a href="#projects" aria-label="projects menu button">
-              Projects
-            </a>
-          </li>
-        </ul>
-      </div>
-      <!-- navbar tabs ends -->
+  <!-- ───────── HERO ───────── -->
+  <section id="home" class="hero">
+    <video class="hero-video" autoplay loop muted playsinline>
+      <source src="src/background%20video/background.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Hi, I am <span class="highlight">Akhil</span>, Robotics Graduate</h1>
+      <a href="mailto:ajosh055@ucr.edu" class="btn">Let's Talk!</a>
     </div>
-  </header>
-  <!-- header ends here -->
+  </section>
 
-  <main>
-    <!-- hamburger -->
-    <div class="hamburger" id="hamburger" data-aos="fade">
-      <div class="hamburgerbase">
-        <button id="hamburger-button" onclick="hamburgerMenu()" tabindex="0" aria-label="Menu Button">
-          <span class="burger-bar" id="burger-bar1"></span>
-          <span class="burger-bar" id="burger-bar2"></span>
-          <span class="burger-bar" id="burger-bar3"></span>
-        </button>
+  <!-- ───────── ABOUT ───────── -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-content" data-aos="fade-up">
+        <div class="about-image">
+          <img src="src/webp/profile1.jpg" alt="Akhil Joshi" />
+        </div>
+        <div class="about-text">
+          <h2>About Me</h2>
+          <p>
+            Robotics Engineer specializing in intelligent robotic systems with a
+            focus on robot design, motion planning, and system integration.
+          </p>
+          <a href="src/pdf/akhil.pdf" target="_blank" class="btn">Download Resume</a>
+        </div>
       </div>
     </div>
-    <!-- hamburger -->
-    <div class="mobiletogglemenu" id="mobiletogglemenu">
-      <ul class="mobile-navbar-tabs-ul" id="mobile-ul">
-        <li id="home-mobile-tab" class="mobile-navbar-tabs-li home activeThismobiletab" onclick="hidemenubyli()">
-          <a href="#home" tabindex="0" aria-label="Home menu button">
-            &#60;/Home&#62;
-          </a>
-        </li>
+  </section>
 
-        <li id="aboutme-mobile-tab" class="mobile-navbar-tabs-li about" onclick="hidemenubyli()">
-          <a href="#about" tabindex="0" aria-label="about menu button">
-            &#60;/AboutMe&#62;
-          </a>
-        </li>
-        <li id="skills-mobile-tab" class="mobile-navbar-tabs-li skills" onclick="hidemenubyli()">
-          <a href="#skills" tabindex="0" aria-label="skills menu button">
-            &#60;/Skills&#62;
-          </a>
-        </li>
-        <li id="projects-mobile-tab" class="mobile-navbar-tabs-li projects" onclick="hidemenubyli()">
-          <a href="#projects" tabindex="0" aria-label="projects menu button">
-            &#60;/Projects&#62;
-          </a>
-        </li>
-      </ul>
+  <!-- ───────── SKILLS ───────── -->
+  <section id="skills" class="skills">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Skills</h2>
+
+      <div class="skills-grid">
+        <!-- ROS -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/ros.png" alt="ROS" />
+          <h3>ROS</h3>
+        </div>
+        <!-- Gazebo -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/gazebo.png" alt="Gazebo" />
+          <h3>Gazebo</h3>
+        </div>
+        <!-- MoveIt -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/moveit1.jpg" alt="MoveIt" />
+          <h3>MoveIt</h3>
+        </div>
+        <!-- MATLAB -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/MATLAB.png" alt="MATLAB" />
+          <h3>MATLAB</h3>
+        </div>
+        <!-- Python -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/python.png" alt="Python" />
+          <h3>Python</h3>
+        </div>
+        <!-- C++ -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/cpplogo.png" alt="C++" />
+          <h3>C++</h3>
+        </div>
+        <!-- Computer Vision -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/Computer_vision.png" alt="Computer Vision" />
+          <h3>Computer Vision</h3>
+        </div>
+        <!-- Deep Learning -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/Deep_learning.png" alt="Deep Learning" />
+          <h3>Deep Learning</h3>
+        </div>
+        <!-- Lidar -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/Lidar.png" alt="LIDAR" />
+          <h3>LIDAR</h3>
+        </div>
+        <!-- Machine Learning -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/Machine Learning.png" alt="Machine Learning" />
+          <h3>Machine Learning</h3>
+        </div>
+        <!-- OpenCV -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/OpenCV_Logo_with_text.png" alt="OpenCV" />
+          <h3>OpenCV</h3>
+        </div>
+        <!-- SolidWorks -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/SolidWorks.png" alt="SolidWorks" />
+          <h3>SolidWorks</h3>
+        </div>
+        <!-- Arduino -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/arduino.webp" alt="Arduino" />
+          <h3>Arduino</h3>
+        </div>
+        <!-- Raspberry Pi -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/raspberry-pi.png" alt="Raspberry Pi" />
+          <h3>Raspberry Pi</h3>
+        </div>
+        <!-- Jetson Nano -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/Jetson.png" alt="Jetson Nano" />
+          <h3>Jetson Nano</h3>
+        </div>
+        <!-- Linux -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/linux.png" alt="Linux" />
+          <h3>Linux</h3>
+        </div>
+        <!-- RViz -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/rviz.png" alt="RViz" />
+          <h3>RViz</h3>
+        </div>
+        <!-- AutoCAD -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/autocad.png" alt="AutoCAD" />
+          <h3>AutoCAD</h3>
+        </div>
+        <!-- LabVIEW -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/LabVIEW.png" alt="LabVIEW" />
+          <h3>LabVIEW</h3>
+        </div>
+        <!-- PLC -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/PLC.png" alt="PLC" />
+          <h3>PLC</h3>
+        </div>
+        <!-- ROS2 -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/ROS2.png" alt="ROS2" />
+          <h3>ROS2</h3>
+        </div>
+        <!-- Sensor Fusion -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/sensor-fusion.png" alt="Sensor Fusion" />
+          <h3>Sensor Fusion</h3>
+        </div>
+        <!-- PCL -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/Pcl_(PointClouds_library).png" alt="PCL" />
+          <h3>PCL</h3>
+        </div>
+        <!-- Blender -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/blender.png" alt="Blender" />
+          <h3>Blender</h3>
+        </div>
+        <!-- Simulink -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/Simulink.png" alt="Simulink" />
+          <h3>Simulink</h3>
+        </div>
+        <!-- TensorFlow -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/download.png" alt="TensorFlow" />
+          <h3>TensorFlow</h3>
+        </div>
+        <!-- VS Code -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/vscode.png" alt="VS Code" />
+          <h3>VS Code</h3>
+        </div>
+        <!-- GitHub -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/github.png" alt="GitHub" />
+          <h3>GitHub</h3>
+        </div>
+        <!-- Docker -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/docker.jpg" alt="Docker" />
+          <h3>Docker</h3>
+        </div>
+        <!-- Bash -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/Photoshop.png" alt="Photoshop" />
+          <h3>Photoshop</h3>
+        </div>
+        <!-- Git -->
+        <div class="skill-item" data-aos="fade-up">
+         <img src="src/png/git.jpg" alt="Git" />
+         <h3>Git</h3>
+        </div>
+        <!-- Unity -->
+        <div class="skill-item" data-aos="fade-up">
+         <img src="src/png/PID-Controller.png" alt="PID" />
+         <h3>PID</h3>
+        </div>
+       </div>
     </div>
-    <!-- mobile toggle menu ends -->
+  </section>
 
-    <section class="landing-page-container" id="home">
-      <div class="blob"></div>
-      <div class="text-content">
-        <article id="hello-friend" data-aos="fade-up" data-aos-delay="0">
-          <p class="jello">H</p><p class="jello">e</p><p class="jello">l</p><p class="jello">l</p><p class="jello">o</p><p class="jello">,</p>&nbsp;<p class="jello">I</p><p class="jello">'</p><p class="jello">m</p>
-        </article>
-        <article id="name" data-aos="fade-up" data-aos-delay="200">
-          <p class="jello">A</p><p class="jello">k</p><p class="jello">h</p><p class="jello">i</p><p class="jello">l</p>&nbsp;<p class="jello">J</p><p class="jello">o</p><p class="jello">s</p><p class="jello">h</p><p class="jello">i</p>
-        </article>
-        <article id="work" data-aos="fade-up" data-aos-delay="400">
-          <div><p class="jello">R</p><p class="jello">o</p><p class="jello">b</p><p class="jello">o</p><p class="jello">t</p><p class="jello">i</p><p class="jello">c</p><p class="jello">s</p></div>
-          <div><p class="jello">,</p></div>
-          <div><p class="jello">M</p><p class="jello">e</p><p class="jello">c</p><p class="jello">h</p><p class="jello">a</p><p class="jello">t</p><p class="jello">r</p><p class="jello">o</p><p class="jello">n</p><p class="jello">i</p><p class="jello">c</p><p class="jello">s</p></div>
-          <div><p class="jello">&</p></div>
-          <div><p class="jello">A</p><p class="jello">u</p><p class="jello">t</p><p class="jello">o</p><p class="jello">m</p><p class="jello">a</p><p class="jello">t</p><p class="jello">i</p><p class="jello">o</p><p class="jello">n</p></div>
-          <div><p class="jello">E</p><p class="jello">n</p><p class="jello">g</p><p class="jello">i</p><p class="jello">n</p><p class="jello">e</p><p class="jello">e</p><p class="jello">r</p></div>
-        </article>
-        <p id="info-para" data-aos="fade-up" data-aos-delay="600">
-          Robotics Engineer passionate about developing intelligent robotic systems. Focused on robot design, motion planning, and system integration, with a drive to optimize autonomous systems for real-world applications.<br /><br />
-          I value innovation, precision, and creating solutions that make a tangible impact in both industrial and medical fields.
-        </p>
-        <div class="contact-btn-div" data-aos="fade-up" data-aos-delay="800">
-          <a href="mailto:ajosh055@ucr.edu" tabindex="-1">
-            <button class="letsTalkBtn">
-              <p class="letsTalkBtn-text">Let's Talk!</p>
-              <span class="letsTalkBtn-BG"></span>
-            </button>
-          </a>
-          <div class="setting-container" id="setting-container">
-            <input type="checkbox" id="switchforsetting" onclick="settingtoggle()" />
+  <!-- ───────── PROJECTS ───────── -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Projects</h2>
+      <div class="project-grid">
 
-            <label for="switchforsetting" class="needtobeinvert" id="labelforsetting" tabindex="0"
-              aria-label="settings for sound and appearance"></label>
-
-            <div class="visualmodetogglebuttoncontainer" id="visualmodetogglebuttoncontainer">
-              <input type="checkbox" id="switchforvisualmode" onclick="visualmode()" />
-              <label for="switchforvisualmode" id="labelforvisualmode" tabindex="0"
-                aria-label="switch appearance"></label>
+        <!-- Project 1 -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-media-row-triple">
+            <div class="project-video-container">
+              <video autoplay loop muted playsinline poster="src/images/obstacle.jpg">
+                <source src="src/videos/obstacle.mp4" type="video/mp4" />
+              </video>
             </div>
-
-            <div class="soundtogglebuttoncontainer" id="soundtogglebuttoncontainer">
-              <input type="checkbox" id="switchforsound" onclick="playpause()" />
-              <label for="switchforsound" id="labelforsound" tabindex="0" aria-label="switch sound"
-                class="needtobeinvert"></label>
+            <div class="project-video-container">
+              <video autoplay loop muted playsinline poster="src/images/obstacle.jpg">
+                <source src="src/videos/obstacle_1.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="project-presentation-container">
+              <img src="src/images/obstacle.jpg" alt="Obstacle Avoidance" />
             </div>
           </div>
-          <!-- setting div ends -->
-        </div>
-      </div>
-    </section>
-    <!-- landing page ends here -->
-    <section class="about-section-container" id="about" data-aos="fade-up">
-      <div class="about-section">
-        <div class="section-heading">
-          <h2 class="section-heading-article" tabindex="0" aria-label="About me heading">
-            &#60;/AboutMe&#62;
-          </h2>
-          <p class="sectionHeadingP"></p>
-        </div>
-        <div class="info-dp-section">
-          <div class="about-info">
-            <p tabindex="0">
-              I am a Robotics Engineer specializing in the development of intelligent robotic systems with a focus on robot design, motion planning, and system integration. My expertise lies in optimizing autonomous systems for industrial and medical applications, ensuring exceptional precision, reliability, and efficiency. I am proficient in computer vision algorithms, ROS-based motion control, and simulation and modeling using MATLAB.
+          <div class="project-content">
+            <h3>Obstacle Avoidance Robot</h3>
+            <p>
+              Developed a wheeled robot with advanced obstacle detection using
+              infrared sensors and optimized navigation algorithms.
             </p>
-            <br />
-            <p tabindex="0">
-              I have hands-on experience working with a range of robotic arms, including Kinova Gen3 Lite, Kinova Gen3, KUKA, and ViperX 300, enabling me to develop versatile solutions tailored to diverse applications. I am committed to leveraging advanced technologies to address complex challenges, driving innovation, and enhancing automation capabilities.
+            <a
+              class="project-link"
+              target="_blank"
+              href="https://github.com/akhiljoshi7060/Obstacle-Avoidance-Wheeled-Robot"
+              >View on GitHub</a
+            >
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-media-row">
+            <div class="project-video-container">
+              <video autoplay loop muted playsinline poster="src/images/litter.jpg">
+                <source src="src/videos/Litter.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="project-presentation-container">
+              <img src="src/images/litter.png" alt="Litter Locator" />
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Litter Locator</h3>
+            <p>
+              AI-powered litter detection system using YOLOv5 and CNNs, achieving
+              90 % accuracy and improving detection speed by 35 %.
             </p>
-            <br />
-            <p tabindex="0">
-              I am passionate about precision engineering, continuous learning, and creating impactful solutions that advance the field of robotics and contribute to real-world progress.
+            <a
+              class="project-link"
+              target="_blank"
+              href="https://github.com/akhiljoshi7060/Litter-Locator"
+              >View on GitHub</a
+            >
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-media-row">
+            <div class="project-video-container">
+              <video autoplay loop muted playsinline poster="src/images/self.jpg">
+                <source src="src/videos/Self-checkout.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="project-presentation-container">
+              <img src="src/images/self.jpg" alt="Self-Checkout System" />
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Self-Checkout System</h3>
+            <p>
+              Automated self-checkout built with TensorFlow Lite on Jetson Nano,
+              improving item recognition accuracy by 20 %.
             </p>
-            <button class="resume-btn" id="resume-btn" onclick="openURL()">
-              <div class="sign">
-                <svg viewBox="0 0 640 512">
-                  <path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-167l80 80c9.4 9.4 24.6 9.4 33.9 0l80-80c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-39 39V184c0-13.3-10.7-24-24-24s-24 10.7-24 24V318.1l-39-39c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9z" />
-                </svg>
-              </div>
-              <div class="text">Resume</div>
-            </button>
-            
-          <div class="dp" data-aos="fade-up">
-            <img src="src\webp\profile1.jpg" alt="Akhil S Nair" tabindex="0" aria-label="image of Akhil" />
+            <a
+              class="project-link"
+              target="_blank"
+              href="https://github.com/akhiljoshi7060/Self-Checkout-System-Jetson-Nano"
+              >View on GitHub</a
+            >
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-media-row">
+            <div class="project-video-container">
+              <video autoplay loop muted playsinline poster="src/images/lane_detection.jpg">
+                <source src="src/videos/Lane.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="project-presentation-container">
+              <img src="src/images/lane_detection.jpg" alt="Lane Detection" />
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Lane Curvature Detection</h3>
+            <p>
+              Implemented Bezier curve based lane detection for autonomous
+              driving, boosting detection accuracy by 15 % on TuSimple dataset.
+            </p>
+            <a
+              class="project-link"
+              target="_blank"
+              href="https://github.com/akhiljoshi7060/Lane-Curvature-Detection"
+              >View on GitHub</a
+            >
+          </div>
+        </div>
+        
+        <!-- Project 5 -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-media-row">
+            <div class="project-video-container">
+              <video autoplay loop muted playsinline poster="src/images/fire.jpg">
+                <source src="src/videos/fire.mp4" type="video/mp4" />
+              </video>
+            </div>
+
+            <div class="project-presentation-container">
+              <img src="src/images/fire.jpg" alt="Fire-Fighting Robot" />
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Fire-Fighting Robot</h3>
+            <p>
+              Mobile robot with 4-DOF flame-tracking arm and PID control,
+              achieving 85 % flame detection accuracy in tests.
+            </p>
+            <a
+              class="project-link"
+              target="_blank"
+              href="https://github.com/akhiljoshi7060/Fire-Fighting-Mobile-Robot"
+              >View on GitHub</a
+            >
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-media-row">
+            <div class="project-presentation-container">
+              <p style="color: #999;">Video coming soon…</p>
+            </div>
+            <div class="project-presentation-container">
+              <p style="color: #999;">Image coming soon…</p>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>coming soon…</h3>
+            <p>
+
+            </p>
+            <a
+              class="project-link"
+              target="_blank"
+              href="_blank"
+              >View on GitHub</a
+            >
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- about section ends  -->
-
-    <section class="skills-section-container" id="skills">
-      <div class="skills-section">
-        <div class="section-heading" data-aos="fade-up">
-          <h2 class="section-heading-article" tabindex="0" aria-label="skills heading">
-            &#60;/Skills&#62;
-          </h2>
-          <p class="sectionHeadingP"></p>
-        </div>
-
-        <div class="frontend-dev-section">
-          <h3 class="frontend-dev-heading" data-aos="fade-up" tabindex="0"
-            aria-label="As a Robotics Engineer these are the skills i have">
-            Tech Stack
-          </h3>
-          <ul class="tech-stack-wrapper">
-            <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/ros.png" alt="ros skill" class="tech-stack-logo" />
-              <span class="tooltip">ROS</span>
-            </li>
-
-            <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/gazebo.png" alt="gazebo skill" class="tech-stack-logo" />
-              <span class="tooltip">Gazebo</span>
-            </li>
-
-            <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/moveit1.jpg" alt="rviz skill" class="tech-stack-logo" />
-              <span class="tooltip">MOVEit</span>
-            </li>
-
-            <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/simulink.jpeg" alt="LabVIEW skill" class="tech-stack-logo" />
-              <span class="tooltip">Simulink</span>
-            </li>
-
-            <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/MATLAB.png" alt="MATLAB skill" class="tech-stack-logo" />
-              <span class="tooltip">MATLAB</span>
-            </li>
-
-            <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/githublogo.png" alt="github skill" class="tech-stack-logo needtobeinvert" />
-              <span class="tooltip">GITHUB</span>
-            </li>
-
-            <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/solidworks-48.png" alt="solidworks skill" class="tech-stack-logo" />
-              <span class="tooltip">Solidworks</span>
-            </li>
-
-            <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/python.png" alt="c language skill" class="tech-stack-logo" />
-              <span class="tooltip">Python</span>
-            </li>
-
-            <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/cpplogo.png" alt="c++ language skill" class="tech-stack-logo" />
-              <span class="tooltip">C++</span>
-            </li>
-
-            <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/arduino.webp" alt="Blender skill" class="tech-stack-logo" />
-              <span class="tooltip">Arduino</span>
-            </li>
-
-            <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/raspberry-pi.png" alt="linuxskill" class="tech-stack-logo" />
-              <span class="tooltip">Raspberry Pi </span>
-            </li>
-
-            <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/vscode.png" alt="vscode skill" class="tech-stack-logo" />
-              <span class="tooltip">Vscode</span>
-            </li>
-
-            <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/jetson.jpg" alt="linuxskill" class="tech-stack-logo" />
-              <span class="tooltip">Jetson Nano</span>
-            </li>
-
-            <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/autocad.png" alt="vscode skill" class="tech-stack-logo" />
-              <span class="tooltip">AUTOCAD</span>
-            </li>
-          
-            <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/rviz.png" alt="vscode skill" class="tech-stack-logo" />
-              <span class="tooltip">RViz</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-    <!-- skills section ends -->
-    <section class="projects-section-container" id="projects">
-      <div class="projects-section-div">
-        <div class="section-heading" data-aos="fade-up">
-          <h2 class="section-heading-article" tabindex="0" aria-label="My projects starts from here">
-            &#60;/Projects&#62;
-          </h2>
-          <p class="sectionHeadingP"></p>
-        </div>
-        <div class="project-boxes-div">
-          <div data-aos="fade-up" class="project-box-wrapper">
-            <div class="project-box project-box1" id="project-box1">
-              <div class="info-div">
-                <article class="ProjectHeading">Obstacle-Avoidance-Wheeled-Robot</article>
-                <p class="ProjectDescription">
-                  Developed a wheeled robot with advanced obstacle detection using infrared sensors and optimized navigation algorithms, ensuring smooth and efficient path planning in dynamic environments.
-                </p>
-                <div class="project-buttons">
-                  <a href="https://github.com/akhiljoshi7060/Obstacle-Avoidance-Wheeled-Robot" target="_blank" class="github-redirect"
-                    aria-label="Visit Multi-Robot Search Drone on GitHub">
-                    <img src="src/svg/github.svg" alt="github redirect button" />
-                  </a>
-                </div>
-              </div>
-              <div class="image-div">
-                <img src="src/webp/obstacle.jpg" alt="Multi-Robot Search Drone preview image" />
-              </div>
-            </div>
-          </div>
-    
-          <div class="project-box-wrapper" data-aos="fade-up">
-            <div class="project-box project-box2" id="project-box2">
-              <div class="info-div">
-                <article class="ProjectHeading">Litter Locator</article>
-                <p class="ProjectDescription">
-                  Developed an AI-powered litter detection system using YOLOv5 and CNNs, achieving 90% accuracy and improving waste detection speed by 35%. Optimized for real-time performance in diverse environments.
-                </p>
-                <div class="project-buttons">
-                  <a href="https://github.com/akhiljoshi7060/Litter-Locator." target="_blank" class="github-redirect"
-                    aria-label="Visit Obstacle Avoidance Wheeled Robot on GitHub">
-                    <img src="src/svg/github.svg" alt="github redirect button" />
-                  </a>
-                </div>
-              </div>
-              <div class="image-div">
-                <img src="src/webp/trash.jpg" alt="Obstacle Avoidance Wheeled Robot preview image" />
-              </div>
-            </div>
-          </div>
-    
-          <div class="project-box-wrapper" data-aos="fade-up">
-            <div class="project-box project-box3" id="project-box3">
-              <div class="info-div">
-                <article class="ProjectHeading">Self-Checkout System (Jetson Nano)</article>
-                <p class="ProjectDescription">
-                  Built an automated self-checkout system leveraging TensorFlow Lite on Jetson Nano, enhancing item recognition accuracy by 20% and reducing checkout times by 40% for faster retail transactions.
-                </p>
-                <div class="project-buttons">
-                  <a href="https://github.com/akhiljoshi7060/Self-Checkout-System-Jetson-Nano" target="_blank" class="github-redirect"
-                    aria-label="Visit Multi-Agent-based Search System on GitHub">
-                    <img src="src/svg/github.svg" alt="github redirect button" />
-                  </a>
-                </div>
-              </div>
-              <div class="image-div">
-                <img src="src/webp/self.jpg" alt="Multi-Agent-based Search System preview image" />
-              </div>
-            </div>
-          </div>
-    
-          <div class="project-box-wrapper" data-aos="fade-up">
-            <div class="project-box project-box4" id="project-box4">
-              <div class="info-div">
-                <article class="ProjectHeading">Lane Curvature Detection (Computer Vision)</article>
-                <p class="ProjectDescription">
-                  Implemented Bezier curve-based lane detection for autonomous driving, improving lane detection accuracy by 15% using the TuSimple dataset and benchmarking against ENet segmentation models.
-                </p>
-                <div class="project-buttons">
-                  <a href="https://github.com/akhiljoshi7060/Lane-Curvature-Detection" target="_blank" class="github-redirect"
-                    aria-label="Visit In-House Delivery Robot on GitHub">
-                    <img src="src/svg/github.svg" alt="github redirect button" />
-                  </a>
-                </div>
-              </div>
-              <div class="image-div">
-                <img src="src/webp/lane.jpg" alt="In-House Delivery Robot preview image" />
-              </div>
-            </div>
-          </div>
-    
-          <div class="project-box-wrapper" data-aos="fade-up">
-            <div class="project-box project-box5" id="project-box5">
-              <div class="info-div">
-                <article class="ProjectHeading">Fire-Fighting Mobile Robot</article>
-                <p class="ProjectDescription">
-                  Designed a mobile robot with a 4-DOF flame-tracking robotic arm and PID control algorithms, achieving 85% accuracy in real-time flame detection using integrated thermal cameras and IR sensors.
-                </p>
-                <div class="project-buttons">
-                  <a href="https://github.com/akhiljoshi7060/Fire-Fighting-Mobile-Robot" target="_blank" class="github-redirect"
-                    aria-label="Visit Localization of a Mobile Robot on GitHub">
-                    <img src="src/svg/github.svg" alt="github redirect button" />
-                  </a>
-                </div>
-              </div>
-              <div class="image-div">
-                <img src="src/webp/fire.jpg" alt="Localization of a Mobile Robot preview image" />
-              </div>
-            </div>
-          </div>
-    
-          <div class="project-box-wrapper" data-aos="fade-up">
-            <div class="project-box project-box6" id="project-box6">
-              <div class="info-div">
-                <article class="ProjectHeading">Four DOF Robotic arm manipulator</article>
-                <p class="ProjectDescription">
-                  Engineered a four-DOF multi-arm robotic system utilizing inverse kinematics, LIDAR, and infrared sensors for synchronized cleaning tasks and real-time obstacle detection, enhancing automation efficiency.
-                </p>
-                <div class="project-buttons">
-                  <a href="https://github.com/akhiljoshi7060/Four-DOF-Robotic-arm-manipulator" target="_blank" class="github-redirect"
-                    aria-label="Visit Autonomous Drone Navigation on GitHub">
-                    <img src="src/svg/github.svg" alt="github redirect button" />
-                  </a>
-                </div>
-              </div>
-              <div class="image-div">
-                <img src="src/webp/four_arm.jpg" alt="Autonomous Drone Navigation preview image" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      
-
-    </section>
-    
-  <!-- main ends here -->
-
-  <footer id="footer">
-    <button class="fas" id="backtotopbutton" onclick="scrolltoTopfunction()">
-      <article aria-label="Back to top">&#8592;BACK TO TOP</article>
-    </button>
-    <div class="footer-background">
-      <div class="footer-blob"></div>
     </div>
-    <div class="footer-foreground">
-      <div class="footercontainer">
-        <div class="two-words">
-          <article tabindex="0" aria-label="Learning, Living, and Leveling Up, my quote">
-            "Learning, Living, and Leveling Up."
-          </article>
-        </div>
-        <div class="social-media-container">
-          <div class="getintouch-heading">
-            <article>GetinTouch();</article>
-          </div>
-          <div class="logos">
-            <a href="https://www.linkedin.com/in/akhiljoshi255" target="_blank"
-              aria-label="My Linkdin"><svg class="SocialHandle" viewBox="0 0 448 512">
-                <path
-                  d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
-              </svg></a>
+  </section>
 
-            <a href="https://github.com/akhiljoshi7060" target="_blank" aria-label="My github"><svg viewBox="0 0 496 512"
-                class="SocialHandle">
-                <path
-                  d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
-              </svg></a>
-
-            <a href="mailto:ajosh055@ucr.edu" target="_blank" aria-label="My G mail"><svg id="GmailLogo"
-                viewBox="0 0 512 512">
-                <path
-                  d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z" />
-              </svg></a>
-          </div>
-        </div>
-        <!-- <div class="footer-avatar-container">
-          <img src="src/png/footer-avatar-vinod.png" alt="animation-head" class="footer-avatar-img" id="footer-wala-avatar"/>
-          <div class="footer-avatar-face">
-            <div class="footer-avatar-eye footer-left-eye">
-              <div class="footer-pupil"></div>
-            </div>
-            <div class="footer-avatar-eye footer-right-eye">
-              <div class="footer-pupil"></div>
-            </div>
-          </div>
-        </div> -->
-        <div class="footer-bottom">
-          <article>
-            
-          </article>
-        </div>
+  <!-- ───────── FOOTER ───────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/akhiljoshi255" target="_blank">LinkedIn</a>
+        <a href="https://github.com/akhiljoshi7060" target="_blank">GitHub</a>
+        <a href="mailto:ajosh055@ucr.edu">Email</a>
       </div>
+      <p>© <span id="year"></span> Akhil Joshi. All rights reserved.</p>
     </div>
   </footer>
-  <!-- footer ends here -->
 
-  <script src="main.js"></script>
-
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <!-- ───────── SCRIPTS ───────── -->
+  <script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init();
-  </script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.AOS) {
+        AOS.init({ duration: 800, easing: "ease-in-out", once: true });
+      }
 
-  <script>
-    function openURL() {
-      var url = "src/pdf/akhil.pdf";
+      // year
+      document.getElementById("year").textContent = new Date().getFullYear();
 
-      window.open(url, "_blank");
-    }
-  </script>
-
-  <script>
-    const cursorInner = document.getElementById("cursor-inner");
-    const cursorOuter = document.getElementById("cursor-outer");
-    const links = document.querySelectorAll("a,label,button");
-
-    document.addEventListener("mousemove", function (e) {
-      const posX = e.clientX;
-      const posY = e.clientY;
-
-      cursorInner.style.left = `${posX}px`;
-      cursorInner.style.top = `${posY}px`;
-
-      // cursorOuter.style.left = `${posX}px`;
-      // cursorOuter.style.top = `${posY}px`;
-
-      // cursorOuter.animate(
-      //   {
-      //     left: `${posX}px`,
-      //     top: `${posY}px`,
-      //   },
-      //   { duration: 500, fill: "forwards" }
-      // );
-
-      links.forEach((link) => {
-        link.addEventListener("mouseenter", () => {
-          cursorInner.classList.add("hover");
-          cursorOuter.classList.add("hover");
-        });
-        link.addEventListener("mouseleave", () => {
-          cursorInner.classList.remove("hover");
-          cursorOuter.classList.remove("hover");
-        });
+      // music
+      const bgMusic = document.getElementById("bgMusic");
+      bgMusic.volume = 0.3;
+      bgMusic.play().catch(() => {
+        const playOnce = () => {
+          bgMusic.play();
+          document.removeEventListener("click", playOnce);
+        };
+        document.addEventListener("click", playOnce, { once: true });
       });
+
+      // nav highlight
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll(".navbar a");
+      const map = new Map([...navLinks].map((a) => [a.getAttribute("href").slice(1), a]));
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            const link = map.get(e.target.id);
+            if (!link) return;
+            if (e.isIntersecting) {
+              navLinks.forEach((l) => l.classList.remove("active"));
+              link.classList.add("active");
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+      sections.forEach((s) => io.observe(s));
     });
   </script>
- <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-
-</script>
 </body>
-
 </html>
