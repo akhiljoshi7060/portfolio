@@ -226,19 +226,6 @@
     .publication-authors, .publication-venue, .publication-summary { color: #475569; margin-bottom: 12px; }
     .publication-summary { color: #334155; }
     @media (max-width: 600px) { .publication-card { padding: 24px; } .navbar ul { gap: 10px; } .navbar a { font-size: .82rem; } }
-
-    /* Clean hero: remove the campus video and keep the focus on the work. */
-    .hero {
-      min-height: 78vh;
-      background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 52%, #dcfce7 100%);
-    }
-    .hero::after { display: none; }
-    .hero-content { position: relative; z-index: 1; }
-    .hero-content h1 { color: #0f172a; max-width: 850px; text-shadow: none; }
-    .hero-intro { color: #475569; text-shadow: none; }
-    .btn-secondary { background: #ffffff; border-color: #86efac; color: #166534; box-shadow: 0 4px 14px rgba(22, 101, 52, .10); }
-    .btn-secondary:hover { background: #f0fdf4; }
-    @media (max-width: 600px) { .hero { min-height: 72svh; } }
   </style>
 </head>
 <body>
@@ -256,7 +243,10 @@
 
   <!-- ───────── HERO ───────── -->
   <section id="home" class="hero">
-<div class="hero-content" data-aos="fade-up">
+    <video class="hero-video" autoplay loop muted playsinline>
+      <source src="src/background%20video/background.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-content" data-aos="fade-up">
       <h1>Robotics Engineer building intelligent systems for the real world.</h1>
       <p class="hero-intro">Hi, I'm <span class="highlight">Akhil Joshi</span> — focused on autonomous systems, robot perception, and control.</p>
       <div class="hero-actions">
