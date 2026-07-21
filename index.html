@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Akhil Joshi | Portfolio</title>
+  <title>Akhil Joshi | Robotics Portfolio</title>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -188,14 +188,41 @@
       .hero-content { transform: translateY(-50px); }
       .hero-content h1 { font-size: clamp(1.6rem, 8vw, 2.8rem); margin-bottom: 120px; }
     }
+
+    /* Portfolio improvements */
+    .hero-content { transform: translateY(-24px); width: min(100%, 920px); }
+    .hero-content h1 { line-height: 1.15; margin-bottom: 20px; }
+    .hero-intro { max-width: 650px; color: #fff; font-size: 1.1rem; text-shadow: 0 2px 8px rgba(0,0,0,.65); margin-bottom: 32px; }
+    .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .btn-secondary { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.75); }
+    .btn-secondary:hover { background: rgba(255,255,255,.28); }
+    .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .skill-group { background: #fff; padding: 28px; border-radius: 15px; border: 2px solid #f0f0f0; box-shadow: 0 5px 20px rgba(0,0,0,.06); }
+    .skill-group:hover { border-color: #22c55e; box-shadow: 0 8px 24px rgba(34,197,94,.18); }
+    .skill-group h3 { color: #166534; font-size: 1.15rem; margin-bottom: 14px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; }
+    .skill-tags li { background: #f0fdf4; color: #166534; border-radius: 999px; font-size: .92rem; padding: 6px 10px; }
+    .project-media-row, .project-media-row-triple { min-height: 280px; }
+    .project-content { padding: 28px; }
+    @media (max-width: 968px) { .hero-content { transform: none; } .hero-content h1 { margin-bottom: 20px; } }
+    @media (max-width: 600px) {
+      .container { padding: 0 18px; }
+      .navbar { top: 14px; width: calc(100% - 28px); padding: 12px 16px; }
+      .navbar ul { justify-content: center; gap: clamp(12px, 4vw, 24px); }
+      .navbar a { font-size: .92rem; }
+      .hero { min-height: 100svh; }
+      .hero-content { padding: 0 20px; }
+      .hero-content h1 { font-size: clamp(2rem, 10vw, 2.6rem); }
+      .skills-grid { grid-template-columns: 1fr; }
+      .project-media-row, .project-media-row-triple { grid-template-columns: 1fr; min-height: 0; }
+      .project-video-container, .project-presentation-container { min-height: 210px; }
+      .project-media-row-triple .project-video-container:nth-child(2) { display: none; }
+    }
   </style>
 </head>
 <body>
-  <audio id="bgMusic" preload="auto" loop>
-    <source src="src/mp3/preloader.mp3" type="audio/mpeg" />
-  </audio>
 
-  <!-- ───────── NAVBAR ───────── -->
+<!-- ───────── NAVBAR ───────── -->
   <nav class="navbar">
     <ul>
       <li><a href="#home" class="active">Home</a></li>
@@ -211,8 +238,13 @@
       <source src="src/background%20video/background.mp4" type="video/mp4" />
     </video>
     <div class="hero-content" data-aos="fade-up">
-      <h1>Hi, I am <span class="highlight">Akhil</span>, Robotics Graduate</h1>
-      <a href="mailto:ajosh055@ucr.edu" class="btn">Let's Talk!</a>
+      <h1>Robotics Engineer building intelligent systems for the real world.</h1>
+      <p class="hero-intro">Hi, I'm <span class="highlight">Akhil Joshi</span> — focused on autonomous systems, robot perception, and control.</p>
+      <div class="hero-actions">
+        <a href="mailto:ajosh055@ucr.edu" class="btn">Let's Talk</a>
+        <a href="https://www.linkedin.com/in/akhiljoshi255" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
+        <a href="https://github.com/akhiljoshi7060" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
+      </div>
     </div>
   </section>
 
@@ -226,8 +258,7 @@
         <div class="about-text">
           <h2>About Me</h2>
           <p>
-            Robotics Engineer specializing in intelligent robotic systems with a
-            focus on robot design, motion planning, and system integration.
+            Robotics engineer with hands-on experience building autonomous systems across ROS/ROS 2, computer vision, motion planning, and embedded AI. I turn perception and control concepts into tested robotic prototypes using Python, C++, Gazebo, Jetson, and real-world sensors.
           </p>
           <a href="src/pdf/akhil.pdf" target="_blank" class="btn">Download Resume</a>
         </div>
@@ -241,171 +272,27 @@
       <h2 class="section-title" data-aos="fade-up">Skills</h2>
 
       <div class="skills-grid">
-        <!-- ROS -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/ros.png" alt="ROS" />
-          <h3>ROS</h3>
-        </div>
-        <!-- Gazebo -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/gazebo.png" alt="Gazebo" />
-          <h3>Gazebo</h3>
-        </div>
-        <!-- MoveIt -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/moveit1.jpg" alt="MoveIt" />
-          <h3>MoveIt</h3>
-        </div>
-        <!-- MATLAB -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/MATLAB.png" alt="MATLAB" />
-          <h3>MATLAB</h3>
-        </div>
-        <!-- Python -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/python.png" alt="Python" />
-          <h3>Python</h3>
-        </div>
-        <!-- C++ -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/cpplogo.png" alt="C++" />
-          <h3>C++</h3>
-        </div>
-        <!-- Computer Vision -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/Computer_vision.png" alt="Computer Vision" />
-          <h3>Computer Vision</h3>
-        </div>
-        <!-- Deep Learning -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/Deep_learning.png" alt="Deep Learning" />
-          <h3>Deep Learning</h3>
-        </div>
-        <!-- Lidar -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/Lidar.png" alt="LIDAR" />
-          <h3>LIDAR</h3>
-        </div>
-        <!-- Machine Learning -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/Machine Learning.png" alt="Machine Learning" />
-          <h3>Machine Learning</h3>
-        </div>
-        <!-- OpenCV -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/OpenCV_Logo_with_text.png" alt="OpenCV" />
-          <h3>OpenCV</h3>
-        </div>
-        <!-- SolidWorks -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/SolidWorks.png" alt="SolidWorks" />
-          <h3>SolidWorks</h3>
-        </div>
-        <!-- Arduino -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/arduino.webp" alt="Arduino" />
-          <h3>Arduino</h3>
-        </div>
-        <!-- Raspberry Pi -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/raspberry-pi.png" alt="Raspberry Pi" />
-          <h3>Raspberry Pi</h3>
-        </div>
-        <!-- Jetson Nano -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/Jetson.png" alt="Jetson Nano" />
-          <h3>Jetson Nano</h3>
-        </div>
-        <!-- Linux -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/linux.png" alt="Linux" />
-          <h3>Linux</h3>
-        </div>
-        <!-- RViz -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/rviz.png" alt="RViz" />
-          <h3>RViz</h3>
-        </div>
-        <!-- AutoCAD -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/autocad.png" alt="AutoCAD" />
-          <h3>AutoCAD</h3>
-        </div>
-        <!-- LabVIEW -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/LabVIEW.png" alt="LabVIEW" />
-          <h3>LabVIEW</h3>
-        </div>
-        <!-- PLC -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/PLC.png" alt="PLC" />
-          <h3>PLC</h3>
-        </div>
-        <!-- ROS2 -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/ROS2.png" alt="ROS2" />
-          <h3>ROS2</h3>
-        </div>
-        <!-- Sensor Fusion -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/sensor-fusion.png" alt="Sensor Fusion" />
-          <h3>Sensor Fusion</h3>
-        </div>
-        <!-- PCL -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/Pcl_(PointClouds_library).png" alt="PCL" />
-          <h3>PCL</h3>
-        </div>
-        <!-- Blender -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/blender.png" alt="Blender" />
-          <h3>Blender</h3>
-        </div>
-        <!-- Simulink -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/Simulink.png" alt="Simulink" />
-          <h3>Simulink</h3>
-        </div>
-        <!-- TensorFlow -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/download.png" alt="TensorFlow" />
-          <h3>TensorFlow</h3>
-        </div>
-        <!-- VS Code -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/vscode.png" alt="VS Code" />
-          <h3>VS Code</h3>
-        </div>
-        <!-- GitHub -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/github.png" alt="GitHub" />
-          <h3>GitHub</h3>
-        </div>
-        <!-- Docker -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/docker.jpg" alt="Docker" />
-          <h3>Docker</h3>
-        </div>
-        <!-- Bash -->
-        <div class="skill-item" data-aos="fade-up">
-          <img src="src/png/Photoshop.png" alt="Photoshop" />
-          <h3>Photoshop</h3>
-        </div>
-        <!-- Git -->
-        <div class="skill-item" data-aos="fade-up">
-         <img src="src/png/git.jpg" alt="Git" />
-         <h3>Git</h3>
-        </div>
-        <!-- Unity -->
-        <div class="skill-item" data-aos="fade-up">
-         <img src="src/png/PID-Controller.png" alt="PID" />
-         <h3>PID</h3>
-        </div>
-       </div>
+        <article class="skill-group" data-aos="fade-up">
+          <h3>Robotics &amp; Autonomy</h3>
+          <ul class="skill-tags"><li>ROS</li><li>ROS 2</li><li>Gazebo</li><li>MoveIt</li><li>RViz</li><li>SLAM</li><li>Motion Planning</li><li>PID Control</li></ul>
+        </article>
+        <article class="skill-group" data-aos="fade-up">
+          <h3>Perception &amp; AI</h3>
+          <ul class="skill-tags"><li>Computer Vision</li><li>OpenCV</li><li>YOLO</li><li>Deep Learning</li><li>TensorFlow</li><li>Sensor Fusion</li><li>PCL</li><li>LiDAR</li></ul>
+        </article>
+        <article class="skill-group" data-aos="fade-up">
+          <h3>Programming &amp; Simulation</h3>
+          <ul class="skill-tags"><li>Python</li><li>C++</li><li>MATLAB</li><li>Simulink</li><li>Linux</li><li>Docker</li><li>Git</li><li>GitHub</li></ul>
+        </article>
+        <article class="skill-group" data-aos="fade-up">
+          <h3>Hardware &amp; Design</h3>
+          <ul class="skill-tags"><li>Jetson Nano</li><li>Arduino</li><li>Raspberry Pi</li><li>PLC</li><li>SolidWorks</li><li>AutoCAD</li><li>LabVIEW</li><li>Blender</li></ul>
+        </article>
+      </div>
     </div>
   </section>
 
-  <!-- ───────── PROJECTS ───────── -->
+  <!-- PROJECTS ───────── -->
   <section id="projects" class="projects">
     <div class="container">
       <h2 class="section-title" data-aos="fade-up">Projects</h2>
@@ -431,8 +318,8 @@
           <div class="project-content">
             <h3>Obstacle Avoidance Robot</h3>
             <p>
-              A ROS-based multi-robot system for autonomous navigation, 
-              SLAM-based mapping, real-time obstacle avoidance, 
+              A ROS-based multi-robot system for autonomous navigation,
+              SLAM-based mapping, real-time obstacle avoidance,
               and victim detection using ArUco markers in Gazebo simulation.
             </p>
             <a
@@ -459,7 +346,7 @@
           <div class="project-content">
             <h3>Litter Locator</h3>
             <p>
-              Drone-based system using YOLO and RNN models to detect trash in aerial images. 
+              Drone-based system using YOLO and RNN models to detect trash in aerial images.
               Trained on 772 images with 3,718 annotations, optimized for NVIDIA Jetson Xavier NX.
             </p>
             <a
@@ -486,7 +373,7 @@
           <div class="project-content">
             <h3>Self-Checkout System</h3>
             <p>
-              Automated fruit self-checkout using YOLOv8 on Jetson Nano with weight sensing and cloud SQL integration for faster, 
+              Automated fruit self-checkout using YOLOv8 on Jetson Nano with weight sensing and cloud SQL integration for faster,
               error-free supermarket checkout.
             </p>
             <a
@@ -524,7 +411,7 @@
             >
           </div>
         </div>
-        
+
         <!-- Project 5 -->
         <div class="project-card" data-aos="fade-up">
           <div class="project-media-row">
@@ -542,36 +429,12 @@
             <h3>Fire-Fighting Robot</h3>
             <p>
               Mobile robot with 4-DOF flame-tracking arm and PID control,
-              achieving 85 % flame detection accuracy in tests.
+              achieving 85% flame detection accuracy in tests.
             </p>
             <a
               class="project-link"
               target="_blank"
               href="https://github.com/akhiljoshi7060/Fire-Fighting-Mobile-Robot"
-              >View on GitHub</a
-            >
-          </div>
-        </div>
-
-        <!-- Project 6 -->
-        <div class="project-card" data-aos="fade-up">
-          <div class="project-media-row">
-            <div class="project-presentation-container">
-              <p style="color: #999;">Video coming soon…</p>
-            </div>
-            <div class="project-presentation-container">
-              <p style="color: #999;">Image coming soon…</p>
-            </div>
-          </div>
-          <div class="project-content">
-            <h3>coming soon…</h3>
-            <p>
-
-            </p>
-            <a
-              class="project-link"
-              target="_blank"
-              href="_blank"
               >View on GitHub</a
             >
           </div>
@@ -602,17 +465,6 @@
 
       // year
       document.getElementById("year").textContent = new Date().getFullYear();
-
-      // music
-      const bgMusic = document.getElementById("bgMusic");
-      bgMusic.volume = 0.3;
-      bgMusic.play().catch(() => {
-        const playOnce = () => {
-          bgMusic.play();
-          document.removeEventListener("click", playOnce);
-        };
-        document.addEventListener("click", playOnce, { once: true });
-      });
 
       // nav highlight
       const sections = document.querySelectorAll("section[id]");
