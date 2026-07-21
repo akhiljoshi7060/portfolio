@@ -226,6 +226,10 @@
     .publication-authors, .publication-venue, .publication-summary { color: #475569; margin-bottom: 12px; }
     .publication-summary { color: #334155; }
     @media (max-width: 600px) { .publication-card { padding: 24px; } .navbar ul { gap: 10px; } .navbar a { font-size: .82rem; } }
+  
+    /* Restore the icon-based Skills grid. */
+    .skills-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 18px; }
+    @media (max-width: 600px) { .skills-grid { grid-template-columns: repeat(2, minmax(120px, 1fr)); } }
   </style>
 </head>
 <body>
@@ -276,23 +280,167 @@
       <h2 class="section-title" data-aos="fade-up">Skills</h2>
 
       <div class="skills-grid">
-        <article class="skill-group" data-aos="fade-up">
-          <h3>Robotics &amp; Autonomy</h3>
-          <ul class="skill-tags"><li>ROS</li><li>ROS 2</li><li>Gazebo</li><li>MoveIt</li><li>RViz</li><li>SLAM</li><li>Motion Planning</li><li>PID Control</li></ul>
-        </article>
-        <article class="skill-group" data-aos="fade-up">
-          <h3>Perception &amp; AI</h3>
-          <ul class="skill-tags"><li>Computer Vision</li><li>OpenCV</li><li>YOLO</li><li>Deep Learning</li><li>TensorFlow</li><li>Sensor Fusion</li><li>PCL</li><li>LiDAR</li></ul>
-        </article>
-        <article class="skill-group" data-aos="fade-up">
-          <h3>Programming &amp; Simulation</h3>
-          <ul class="skill-tags"><li>Python</li><li>C++</li><li>MATLAB</li><li>Simulink</li><li>Linux</li><li>Docker</li><li>Git</li><li>GitHub</li></ul>
-        </article>
-        <article class="skill-group" data-aos="fade-up">
-          <h3>Hardware &amp; Design</h3>
-          <ul class="skill-tags"><li>Jetson Nano</li><li>Arduino</li><li>Raspberry Pi</li><li>PLC</li><li>SolidWorks</li><li>AutoCAD</li><li>LabVIEW</li><li>Blender</li></ul>
-        </article>
-      </div>
+        <!-- ROS -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/ros.png" alt="ROS" />
+          <h3>ROS</h3>
+        </div>
+        <!-- Gazebo -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/gazebo.png" alt="Gazebo" />
+          <h3>Gazebo</h3>
+        </div>
+        <!-- MoveIt -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/moveit1.jpg" alt="MoveIt" />
+          <h3>MoveIt</h3>
+        </div>
+        <!-- MATLAB -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/MATLAB.png" alt="MATLAB" />
+          <h3>MATLAB</h3>
+        </div>
+        <!-- Python -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/python.png" alt="Python" />
+          <h3>Python</h3>
+        </div>
+        <!-- C++ -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/cpplogo.png" alt="C++" />
+          <h3>C++</h3>
+        </div>
+        <!-- Computer Vision -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/Computer_vision.png" alt="Computer Vision" />
+          <h3>Computer Vision</h3>
+        </div>
+        <!-- Deep Learning -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/Deep_learning.png" alt="Deep Learning" />
+          <h3>Deep Learning</h3>
+        </div>
+        <!-- Lidar -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/Lidar.png" alt="LIDAR" />
+          <h3>LIDAR</h3>
+        </div>
+        <!-- Machine Learning -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/Machine Learning.png" alt="Machine Learning" />
+          <h3>Machine Learning</h3>
+        </div>
+        <!-- OpenCV -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/OpenCV_Logo_with_text.png" alt="OpenCV" />
+          <h3>OpenCV</h3>
+        </div>
+        <!-- SolidWorks -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/SolidWorks.png" alt="SolidWorks" />
+          <h3>SolidWorks</h3>
+        </div>
+        <!-- Arduino -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/arduino.webp" alt="Arduino" />
+          <h3>Arduino</h3>
+        </div>
+        <!-- Raspberry Pi -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/raspberry-pi.png" alt="Raspberry Pi" />
+          <h3>Raspberry Pi</h3>
+        </div>
+        <!-- Jetson Nano -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/Jetson.png" alt="Jetson Nano" />
+          <h3>Jetson Nano</h3>
+        </div>
+        <!-- Linux -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/linux.png" alt="Linux" />
+          <h3>Linux</h3>
+        </div>
+        <!-- RViz -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/rviz.png" alt="RViz" />
+          <h3>RViz</h3>
+        </div>
+        <!-- AutoCAD -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/autocad.png" alt="AutoCAD" />
+          <h3>AutoCAD</h3>
+        </div>
+        <!-- LabVIEW -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/LabVIEW.png" alt="LabVIEW" />
+          <h3>LabVIEW</h3>
+        </div>
+        <!-- PLC -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/PLC.png" alt="PLC" />
+          <h3>PLC</h3>
+        </div>
+        <!-- ROS2 -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/ROS2.png" alt="ROS2" />
+          <h3>ROS2</h3>
+        </div>
+        <!-- Sensor Fusion -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/sensor-fusion.png" alt="Sensor Fusion" />
+          <h3>Sensor Fusion</h3>
+        </div>
+        <!-- PCL -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/Pcl_(PointClouds_library).png" alt="PCL" />
+          <h3>PCL</h3>
+        </div>
+        <!-- Blender -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/blender.png" alt="Blender" />
+          <h3>Blender</h3>
+        </div>
+        <!-- Simulink -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/Simulink.png" alt="Simulink" />
+          <h3>Simulink</h3>
+        </div>
+        <!-- TensorFlow -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/download.png" alt="TensorFlow" />
+          <h3>TensorFlow</h3>
+        </div>
+        <!-- VS Code -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/vscode.png" alt="VS Code" />
+          <h3>VS Code</h3>
+        </div>
+        <!-- GitHub -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/github.png" alt="GitHub" />
+          <h3>GitHub</h3>
+        </div>
+        <!-- Docker -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/docker.jpg" alt="Docker" />
+          <h3>Docker</h3>
+        </div>
+        <!-- Bash -->
+        <div class="skill-item" data-aos="fade-up">
+          <img src="src/png/Photoshop.png" alt="Photoshop" />
+          <h3>Photoshop</h3>
+        </div>
+        <!-- Git -->
+        <div class="skill-item" data-aos="fade-up">
+         <img src="src/png/git.jpg" alt="Git" />
+         <h3>Git</h3>
+        </div>
+        <!-- Unity -->
+        <div class="skill-item" data-aos="fade-up">
+         <img src="src/png/PID-Controller.png" alt="PID" />
+         <h3>PID</h3>
+        </div>
+       </div>
     </div>
   </section>
 
