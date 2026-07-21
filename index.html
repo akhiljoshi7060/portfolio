@@ -218,6 +218,14 @@
       .project-video-container, .project-presentation-container { min-height: 210px; }
       .project-media-row-triple .project-video-container:nth-child(2) { display: none; }
     }
+
+    .publications { padding: 90px 0; background: #fff; }
+    .publication-card { max-width: 860px; margin: 0 auto; padding: 34px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 20px; box-shadow: 0 8px 24px rgba(22, 101, 52, .08); }
+    .publication-type { color: #15803d; font-size: .8rem; font-weight: 700; letter-spacing: .08em; margin-bottom: 10px; }
+    .publication-card h3 { font-size: 1.55rem; margin-bottom: 10px; }
+    .publication-authors, .publication-venue, .publication-summary { color: #475569; margin-bottom: 12px; }
+    .publication-summary { color: #334155; }
+    @media (max-width: 600px) { .publication-card { padding: 24px; } .navbar ul { gap: 10px; } .navbar a { font-size: .82rem; } }
   </style>
 </head>
 <body>
@@ -229,6 +237,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#publications">Publications</a></li>
     </ul>
   </nav>
 
@@ -292,6 +301,20 @@
     </div>
   </section>
 
+  <!-- PUBLICATIONS -->
+  <section id="publications" class="publications">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Publications</h2>
+      <article class="publication-card" data-aos="fade-up">
+        <p class="publication-type">JOURNAL ARTICLE · 2023</p>
+        <h3>Fire Fighting Robot</h3>
+        <p class="publication-authors">Sidharth Thangaraja, Pavan R, Avinash V, Ankur Karn, Akhil Joshi, Prabandh Battu, G Sadashiv Shri Ram, and Rallapalli Dinesh Sai</p>
+        <p class="publication-venue">International Journal of All Research Education and Scientific Methods (IJARESM), Volume 11, Issue 1, January 2023.</p>
+        <p class="publication-summary">Coauthored a paper presenting QRob, a compact fire-fighting robot with obstacle avoidance, flame detection, remote monitoring, and autonomous fire-location capabilities.</p>
+        <a class="project-link" href="src/pdf/AKHIL_Publication.pdf" target="_blank" rel="noopener noreferrer">Read publication (PDF)</a>
+      </article>
+    </div>
+  </section>
   <!-- PROJECTS ───────── -->
   <section id="projects" class="projects">
     <div class="container">
